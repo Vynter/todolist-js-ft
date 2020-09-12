@@ -11,26 +11,54 @@ const tasks = ["task1", "task2"];
 
 function taskToDom(task) {
   if (typeof task === "string" && task) {
-    let newItem = document.createElement("li");
+    let newLi = document.createElement("li");
     let rmv = document.createElement("button");
 
-    newItem.textContent = task;
+    newLi.textContent = task;
     rmv.textContent = "REMOVE";
 
-    newItem.appendChild(rmv);
+    rmv.addEventListener("click", () => {
+      list.removeChild(rmv.parentNode);
+    });
 
-    list.insertBefore(newItem, list.firstChild);
+    newLi.appendChild(rmv);
+
+    list.insertBefore(newLi, list.firstChild);
   }
 }
 
 for (let i = 0; i < tasks.length; i++) {
   taskToDom(tasks[i]);
 }
+//used in click event and pressing enter to add data
+function newTask() {
+  input.focus(); //garder curseur
+}
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    newTask();
+  }
+});
 
 add.addEventListener("click", function () {
   let c = input.value;
   let newOne = document.createElement("li");
+  let rmv = document.createElement("button");
+
   newOne.innerText = c;
-  list.appendChild(newOne);
-  console.log(newOne);
+  rmv.textContent = "REMOVE";
+  rmv.addEventListener("click", () => {
+    list.removeChild(rmv.parentNode);
+  });
+  newOne.appendChild(rmv);
+  list.insertBefore(newOne, list.firstChild);
 });
+
+//clear
+clear.addEventListener("click", () => {
+  list.innerHTML = "";
+});
+
+//load of the tasks from a json file
+load.addEventListener("click", () => {});
