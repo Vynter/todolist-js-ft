@@ -27,9 +27,13 @@ function taskToDom(task) {
   }
 }
 
-for (let i = 0; i < tasks.length; i++) {
-  taskToDom(tasks[i]);
-}
+tasks.forEach((task) => {
+  //task représente chaque element de tasks le tableau
+  taskToDom(task);
+});
+// for (let i = 0; i < tasks.length; i++) {
+//   taskToDom(tasks[i]);
+// }
 //used in click event and pressing enter to add data
 function newTask() {
   input.focus(); //garder curseur
@@ -62,3 +66,4 @@ clear.addEventListener("click", () => {
 
 //load of the tasks from a json file
 load.addEventListener("click", () => {});
+//63
