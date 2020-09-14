@@ -102,4 +102,3 @@ load.addEventListener("click", () => {
       throw new TypeError(`la réponse n'est pas un tableau  )`);
     });
 });
-//63
